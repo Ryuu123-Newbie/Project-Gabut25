@@ -1,1 +1,5 @@
 - [x] Remove Home and Portfolio links from navigation in index.html, keep only About and Contact.
+- [ ] Add Random Joke Generator feature to index.html
+  - [ ] Add HTML structure for joke section
+  - [ ] Add CSS styles for joke container
+  - [ ] Add JavaScript for fetching and displaying jokes
