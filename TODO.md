@@ -1,0 +1,1 @@
+- [x] Remove Home and Portfolio links from navigation in index.html, keep only About and Contact.
