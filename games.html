@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Game Pre-Installed - Project Gabut</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-dark: 0 15px 35px rgba(0, 0, 0, 0.2);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --border-radius: 20px;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: url('Ambatublow.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-primary);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-dark);
+      padding: 50px;
+      text-align: center;
+      animation: slideIn 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0.05;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    h1 {
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    nav {
+      margin-bottom: 40px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: white;
+      background: var(--accent-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .search-container {
+      margin-bottom: 40px;
+    }
+
+    .search-input {
+      padding: 15px 20px;
+      font-size: 1.1em;
+      border: 2px solid var(--glass-border);
+      border-radius: 50px;
+      width: 100%;
+      max-width: 500px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      color: var(--text-primary);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+      transform: scale(1.02);
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 12px 25px;
+      border: none;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gradient);
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+
+    .filter-btn:hover::before,
+    .filter-btn.active::before {
+      left: 0;
+    }
+
+    .filter-btn.active {
+      color: white;
+      box-shadow: var(--shadow-light);
+    }
+
+    .game-grid {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .game-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .game-card:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .game-card h3 {
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.4em;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .game-card p {
+      margin: 8px 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .game-card .category {
+      display: inline-block;
+      background: var(--accent-gradient);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.8em;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .game-card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: var(--accent-gradient);
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .game-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+    }
+
+    .warning {
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 35px;
+      font-size: 1em;
+      color: var(--text-secondary);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .warning strong {
+      color: #ff6b6b;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .game-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+
+      nav a {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+
+      .filter-buttons {
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .game-card {
+        padding: 20px;
+      }
+
+      .search-input {
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-gradient);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Music -->
+  <audio id="bg-music" loop autoplay style="display: none;">
+    <source src="Music/DJ MALU MALU BOY.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Background Music Persistence
+    const bgMusic = document.getElementById('bg-music');
+    const currentTime = sessionStorage.getItem('bgMusicTime');
+    const isPlaying = sessionStorage.getItem('bgMusicPlaying') === 'true';
+    const musicPlayerActive = sessionStorage.getItem('musicPlayerActive') === 'true';
+
+    if (currentTime) {
+      bgMusic.currentTime = parseFloat(currentTime);
+    }
+
+    if (isPlaying && !musicPlayerActive) {
+      bgMusic.play().catch(() => {});
+    }
+
+    // Save music state when page unloads
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('bgMusicTime', bgMusic.currentTime);
+      sessionStorage.setItem('bgMusicPlaying', !bgMusic.paused);
+    });
+
+    // Start from the most repeated part (around 30 seconds in)
+    bgMusic.addEventListener('loadedmetadata', () => {
+      if (!currentTime) {
+        bgMusic.currentTime = 30;
+      }
+    });
+  </script>
+
+  <div class="container">
+    <h1>Download Game Pre-Installed</h1>
+    <p class="subtitle">Temukan situs-situs terpercaya untuk download game dengan pre-installed dan crack terbaru.</p>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Aplikasi Utama</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="warning">
+      <strong>Peringatan:</strong> Pastikan menggunakan VPN atau Incognito Mode saat mengakses situs download game. Link eksternal membuka di tab baru untuk keamanan. Gunakan dengan risiko sendiri.
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="search-input" class="search-input" placeholder="Cari game atau situs...">
+    </div>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="popular">Populer</button>
+      <button class="filter-btn" data-filter="new">Terbaru</button>
+      <button class="filter-btn" data-filter="trusted">Terpercaya</button>
+      <button class="filter-btn" data-filter="alternative">Alternatif</button>
+    </div>
+
+    <div class="game-grid" id="game-list">
+      <!-- Game sites will be added here -->
+    </div>
+  </div>
+
+  <script>
+    const gameSites = [
+      {
+        name: "SteamUnlocked",
+        description: "Situs web yang menyediakan download game PC gratis dengan versi pre-installed. Koleksi game yang luas tanpa memerlukan akun Steam, fokus pada game populer dan indie.",
+        url: "https://steamunlocked.org",
+        category: "popular",
+        tags: ["steam", "pc", "pre-installed", "gratis"]
+      },
+      {
+        name: "SteamGG",
+        description: "Platform distribusi game yang menawarkan download game Steam secara gratis, termasuk game terbaru dengan fitur pre-installed dan update otomatis.",
+        url: "https://steamgg.net",
+        category: "popular",
+        tags: ["steam", "pc", "terbaru", "update"]
+      },
+      {
+        name: "FitGirl Repacks",
+        description: "Spesialisasi dalam repack game PC dengan ukuran file yang sangat kecil namun tetap mempertahankan kualitas tinggi. Fokus pada kompresi maksimal.",
+        url: "https://fitgirl-repacks.site",
+        category: "trusted",
+        tags: ["repack", "pc", "kompresi", "kualitas"]
+      },
+      {
+        name: "DODI Repacks",
+        description: "Repack game dengan kualitas tinggi dan ukuran file yang optimal. Update rutin dengan game terbaru dan dukungan komunitas yang baik.",
+        url: "https://dodi-repacks.site",
+        category: "trusted",
+        tags: ["repack", "pc", "kualitas", "update"]
+      },
+      {
+        name: "GOG Games",
+        description: "Platform distribusi digital yang menawarkan game DRM-free. Banyak game klasik dan indie tersedia untuk download gratis.",
+        url: "https://gog-games.com",
+        category: "trusted",
+        tags: ["gog", "drm-free", "klasik", "indie"]
+      },
+      {
+        name: "MyAbandonware",
+        description: "Koleksi game abandonware klasik dari berbagai platform. Fokus pada game retro dan nostalgia gaming.",
+        url: "https://myabandonware.com",
+        category: "alternative",
+        tags: ["retro", "klasik", "abandonware", "nostalgia"]
+      },
+      {
+        name: "GameFabrique",
+        description: "Download game ROM dan emulator untuk berbagai konsol klasik. Lengkap dengan panduan setup dan konfigurasi.",
+        url: "https://gamefabrique.com",
+        category: "alternative",
+        tags: ["rom", "emulator", "konsol", "retro"]
+      },
+      {
+        name: "Ocean of Games",
+        description: "Koleksi game PC yang sangat lengkap dengan berbagai kategori. Update rutin dengan game terbaru dan crack terpercaya.",
+        url: "https://oceanofgames.com",
+        category: "popular",
+        tags: ["pc", "koleksi", "update", "crack"]
+      },
+      {
+        name: "Apunkagames",
+        description: "Situs download game PC Indonesia dengan koleksi yang cukup lengkap. Fokus pada game populer dan mudah diakses.",
+        url: "https://apunkagames.com",
+        category: "new",
+        tags: ["indonesia", "pc", "populer", "mudah"]
+      },
+      {
+        name: "GamCore",
+        description: "Platform download game dengan interface yang user-friendly. Berbagai kategori game tersedia dengan link download cepat.",
+        url: "https://gamcore.com",
+        category: "new",
+        tags: ["interface", "kategori", "cepat", "user-friendly"]
+      },
+      {
+        name: "MegaGames",
+        description: "Situs download game PC dengan fokus pada trainer, cheat, dan mod. Lengkap dengan tutorial dan panduan penggunaan.",
+        url: "https://megagames.com",
+        category: "alternative",
+        tags: ["trainer", "cheat", "mod", "tutorial"]
+      },
+      {
+        name: "GameCopyWorld",
+        description: "Koleksi crack dan patch untuk berbagai game PC. Update rutin dengan crack terbaru untuk game populer.",
+        url: "https://gamecopyworld.com",
+        category: "trusted",
+        tags: ["crack", "patch", "update", "populer"]
+      }
+    ];
+
+    const gameList = document.getElementById('game-list');
+    const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function displayGames(games) {
+      gameList.innerHTML = '';
+      games.forEach((site, index) => {
+        const gameCard = document.createElement('div');
+        gameCard.className = 'game-card';
+        gameCard.style.animationDelay = `${index * 0.1}s`;
+        gameCard.innerHTML = `
+          <span class="category">${site.category.charAt(0).toUpperCase() + site.category.slice(1)}</span>
+          <h3>${site.name}</h3>
+          <p>${site.description}</p>
+          <a href="${site.url}" target="_blank" rel="noopener noreferrer">Kunjungi Situs</a>
+        `;
+        gameList.appendChild(gameCard);
+      });
+    }
+
+    function filterGames(category) {
+      let filteredGames = gameSites;
+      if (category !== 'all') {
+        filteredGames = gameSites.filter(site => site.category === category);
+      }
+      return filteredGames;
+    }
+
+    function searchGames(query) {
+      const lowerQuery = query.toLowerCase();
+      return gameSites.filter(site =>
+        site.name.toLowerCase().includes(lowerQuery) ||
+        site.description.toLowerCase().includes(lowerQuery) ||
+        site.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
+      );
+    }
+
+    // Initial display
+    displayGames(gameSites);
+
+    // Filter functionality
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.dataset.filter;
+        const filteredGames = filterGames(category);
+        displayGames(filteredGames);
+      });
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value;
+      let gamesToShow = gameSites;
+
+      // Apply current filter
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      if (activeFilter !== 'all') {
+        gamesToShow = filterGames(activeFilter);
+      }
+
+      // Apply search
+      if (query) {
+        gamesToShow = searchGames(query);
+      }
+
+      displayGames(gamesToShow);
+    });
+  </script>
+</body>
+</html>

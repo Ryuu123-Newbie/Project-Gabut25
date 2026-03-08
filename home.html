@@ -5,65 +5,233 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home - Project Gabut</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #89f7fe, #66a6ff);
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    .home-container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 90%;
-    }
-    h1 {
-      color: #007bff;
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #007bff;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 2px solid #007bff;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-    .nav-links a:hover {
-      background: #007bff;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="home-container">
-    <h1>🌐 Selamat Datang di Project Gabut</h1>
-    <p>Platform anonim untuk curhat, musik, dan hiburan. Jelajahi fitur-fitur menarik kami!</p>
-    <div class="nav-links">
-      <a href="index.html">Masuk ke Aplikasi</a>
-      <a href="about.html">Tentang</a>
-      <a href="contact.html">Kontak</a>
-    </div>
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop style="display: none;">
+    <source src="Videos/kntl.webm" type="video/webm">
+    <source src="Videos/kntl.mp4" type="video/mp4">
+  </video>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop autoplay style="display: none;">
+    <source src="Music/DJ MALU MALU BOY.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Selamat Datang di <span class="highlight">Project Gabut</span></h1>
+        <p class="hero-subtitle">Platform anonim untuk curhat, musik, dan hiburan. Temukan tempat untuk berekspresi bebas!</p>
+        <div class="hero-buttons">
+          <a href="index.html" class="cta-button primary">Masuk ke Aplikasi</a>
+          <a href="#features" class="cta-button secondary">Jelajahi Fitur</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-icons">
+          <div class="icon music">🎵</div>
+          <div class="icon joke">😄</div>
+          <div class="icon confess">💬</div>
+          <div class="icon game">🎮</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Aplikasi Utama</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <h2>Mengapa Memilih Project Gabut?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎭</div>
+          <h3>Anonim & Bebas</h3>
+          <p>Ekspresikan diri tanpa takut dihakimi. Semua curhatan dan interaksi sepenuhnya anonim.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>Musik Terbaik</h3>
+          <p>Nikmati koleksi musik pilihan dengan player yang mudah digunakan dan playlist yang bervariasi.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">😄</div>
+          <h3>Joke Generator</h3>
+          <p>Tertawakan hari Anda dengan lelucon acak yang siap menghibur kapan saja.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <h3>Games Seru</h3>
+          <p>Koleksi game mini yang menyenangkan untuk mengisi waktu luang Anda.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💫</div>
+          <h3>UI Modern</h3>
+          <p>Desain glassmorphism yang elegan dengan animasi halus untuk pengalaman visual yang menakjubkan.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Responsif</h3>
+          <p>Bekerja sempurna di semua perangkat, dari desktop hingga mobile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <h2>Statistik Project Gabut</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="1000">0</div>
+          <div class="stat-label">Curhatan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Lagu</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="10000">0</div>
+          <div class="stat-label">Jokes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-label">Pengguna Aktif</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2>Apa Kata Mereka?</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Project Gabut adalah tempat yang sempurna untuk meluapkan emosi tanpa takut. Sangat membantu!"
+          </div>
+          <div class="testimonial-author">- User Anonim #1</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Musiknya keren banget! Player-nya smooth dan playlist-nya selalu update."
+          </div>
+          <div class="testimonial-author">- User Anonim #2</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Joke generator-nya selalu bikin ketawa. Perfect untuk ngehilangin stress!"
+          </div>
+          <div class="testimonial-author">- User Anonim #3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Siap untuk Bergabut?</h2>
+      <p>Jangan ragu lagi! Masuk sekarang dan nikmati semua fitur menarik Project Gabut.</p>
+      <a href="index.html" class="cta-button primary large">Mulai Sekarang</a>
+    </section>
+  </div>
+
+  <script>
+    // Background Music Persistence
+    const bgMusic = document.getElementById('bg-music');
+    const currentTime = sessionStorage.getItem('bgMusicTime');
+    const isPlaying = sessionStorage.getItem('bgMusicPlaying') === 'true';
+    const musicPlayerActive = sessionStorage.getItem('musicPlayerActive') === 'true';
+
+    if (currentTime) {
+      bgMusic.currentTime = parseFloat(currentTime);
+    } else {
+      bgMusic.currentTime = 40; // Start from 40 seconds as per user request
+    }
+
+    if (isPlaying && !musicPlayerActive) {
+      bgMusic.play().catch(() => {});
+    }
+
+    // Save music state when page unloads
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('bgMusicTime', bgMusic.currentTime);
+      sessionStorage.setItem('bgMusicPlaying', !bgMusic.paused);
+    });
+
+    // Animate stats numbers
+    function animateNumbers() {
+      const statNumbers = document.querySelectorAll('.stat-number');
+      statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 100;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            stat.textContent = target;
+            clearInterval(timer);
+          } else {
+            stat.textContent = Math.floor(current);
+          }
+        }, 30);
+      });
+    }
+
+    // Trigger animations on scroll
+    function handleScroll() {
+      const elements = document.querySelectorAll('.feature-card, .stat-item, .testimonial-card');
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    // Initialize animations
+    window.addEventListener('load', () => {
+      animateNumbers();
+      handleScroll();
+    });
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

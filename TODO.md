@@ -1,5 +1,8 @@
-- [x] Remove Home and Portfolio links from navigation in index.html, keep only About and Contact.
-- [ ] Add Random Joke Generator feature to index.html
-  - [ ] Add HTML structure for joke section
-  - [ ] Add CSS styles for joke container
-  - [ ] Add JavaScript for fetching and displaying jokes
+# TODO: Update Background Music to Caramelldansen and Add Persistence
+
+- [x] Update index.html background music to Music/caramelldansen.mp3 and add persistence JavaScript
+- [x] Update home.html background music to Music/caramelldansen.mp3 and add persistence JavaScript
+- [x] Update about.html background music to Music/caramelldansen.mp3 and add persistence JavaScript
+- [x] Update games.html background music to Music/caramelldansen.mp3 and add persistence JavaScript
+- [x] Update contact.html background music to Music/caramelldansen.mp3 and add persistence JavaScript
+- [x] Update secret.html background music to Music/caramelldansen-hardtek.mp3 and add persistence JavaScript

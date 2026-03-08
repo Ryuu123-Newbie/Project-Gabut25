@@ -5,64 +5,209 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Project Gabut</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #89f7fe, #66a6ff);
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    .about-container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 90%;
-    }
-    h1 {
-      color: #007bff;
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #007bff;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 2px solid #007bff;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-    .nav-links a:hover {
-      background: #007bff;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="about-container">
-    <h1>📖 Tentang Project Gabut</h1>
-    <p>Project ini dibuat oleh sosok sigma untuk memberikan platform anonim bagi pengguna untuk berbagi cerita, mendengarkan musik, dan menikmati hiburan.</p>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="contact.html">Kontak</a>
-    </div>
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop style="display: none;">
+    <source src="Videos/kntl.webm" type="video/webm">
+    <source src="Videos/kntl.mp4" type="video/mp4">
+  </video>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop autoplay style="display: none;">
+    <source src="Music/DJ MALU MALU BOY.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="about-hero">
+      <div class="about-hero-content">
+        <h1 class="about-hero-title">Tentang <span class="highlight">Project Gabut</span></h1>
+        <p class="about-hero-subtitle">Platform anonim untuk curhat, musik, dan hiburan. Temukan tempat untuk berekspresi bebas!</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Aplikasi Utama</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+      <h2>Misi Kami</h2>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <div class="mission-icon">🛡️</div>
+          <h3>Keamanan & Anonim</h3>
+          <p>Menyediakan platform yang sepenuhnya anonim sehingga pengguna dapat berekspresi tanpa rasa takut atau khawatir.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">🎭</div>
+          <h3>Ekspresi Bebas</h3>
+          <p>Mendorong kreativitas dan kebebasan berekspresi melalui berbagai fitur interaktif dan menarik.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">🤝</div>
+          <h3>Koneksi Manusia</h3>
+          <p>Membangun komunitas virtual yang menghubungkan orang-orang melalui musik, humor, dan pengalaman bersama.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">🎨</div>
+          <h3>Inovasi UI/UX</h3>
+          <p>Menerapkan desain modern dan teknologi terkini untuk memberikan pengalaman pengguna yang luar biasa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <h2>Tim di Balik Layar</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-avatar">
+            <div class="avatar-placeholder">Σ</div>
+          </div>
+          <div class="member-info">
+            <h3>Sosok Sigma</h3>
+            <p class="member-role">Founder & Developer</p>
+            <p class="member-bio">Seorang developer yang percaya bahwa teknologi harus membuat hidup lebih menyenangkan. Ahli dalam menciptakan pengalaman digital yang unik dan bermakna.</p>
+            <div class="member-skills">
+              <span class="skill">JavaScript</span>
+              <span class="skill">HTML/CSS</span>
+              <span class="skill">UI/UX Design</span>
+              <span class="skill">Creativity</span>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">
+            <div class="avatar-placeholder">B</div>
+          </div>
+          <div class="member-info">
+            <h3>Blackbox</h3>
+            <p class="member-role">Co-Developer & AI Assistant</p>
+            <p class="member-bio">Assist AI yang membantu dalam pengembangan dan pengelolaan website. Ahli dalam coding, debugging, dan optimasi performa.</p>
+            <div class="member-skills">
+              <span class="skill">AI Assistant</span>
+              <span class="skill">Problem Solving</span>
+              <span class="skill">Code Optimization</span>
+              <span class="skill">Technical Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <h2>Nilai-Nilai Kami</h2>
+      <div class="values-content">
+        <div class="values-text">
+          <h3>Kenapa Project Gabut Berbeda?</h3>
+          <ul class="values-list">
+            <li><strong>Anonim & Aman:</strong> Privasi pengguna adalah prioritas utama</li>
+            <li><strong>Tanpa Judgment:</strong> Ruang bebas untuk berekspresi apa adanya</li>
+            <li><strong>Hiburan Berkualitas:</strong> Konten yang menghibur dan bermakna</li>
+            <li><strong>Komunitas Positif:</strong> Mendorong interaksi yang sehat dan mendukung</li>
+            <li><strong>Inovasi Berkelanjutan:</strong> Selalu berkembang untuk memberikan yang terbaik</li>
+          </ul>
+        </div>
+        <div class="values-visual">
+          <div class="value-icons">
+            <div class="value-icon">🔒</div>
+            <div class="value-icon">💝</div>
+            <div class="value-icon">🎯</div>
+            <div class="value-icon">🌟</div>
+            <div class="value-icon">🚀</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Bergabunglah dengan Komunitas Kami</h2>
+      <p>Jadilah bagian dari perjalanan Project Gabut. Temukan tempatmu di dunia digital yang penuh warna!</p>
+      <div class="cta-buttons">
+        <a href="index.html" class="cta-button primary large">Mulai Eksplorasi</a>
+        <a href="contact.html" class="cta-button secondary">Hubungi Kami</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Background Music Persistence
+    const bgMusic = document.getElementById('bg-music');
+    const currentTime = sessionStorage.getItem('bgMusicTime');
+    const isPlaying = sessionStorage.getItem('bgMusicPlaying') === 'true';
+
+    if (currentTime) {
+      bgMusic.currentTime = parseFloat(currentTime);
+    } else {
+      bgMusic.currentTime = 40;
+    }
+
+    if (isPlaying) {
+      bgMusic.play().catch(() => {});
+    }
+
+    // Save music state when page unloads
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('bgMusicTime', bgMusic.currentTime);
+      sessionStorage.setItem('bgMusicPlaying', !bgMusic.paused);
+    });
+
+    // Animate elements on scroll
+    function handleScroll() {
+      const elements = document.querySelectorAll('.mission-card, .showcase-item, .team-member, .story-stat');
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    // Initialize animations
+    window.addEventListener('load', () => {
+      handleScroll();
+    });
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

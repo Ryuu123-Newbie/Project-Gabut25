@@ -1,0 +1,14 @@
+# Large files
+ffmpeg/
+ffmpeg-master.zip
+ffmpeg.zip
+Music/
+Videos/
+Ambatublow.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp

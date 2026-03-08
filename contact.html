@@ -5,71 +5,597 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Project Gabut</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-dark: 0 15px 35px rgba(0, 0, 0, 0.2);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --border-radius: 20px;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #89f7fe, #66a6ff);
-      color: #333;
+      background: url('Ambatublow.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-primary);
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
       margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-dark);
+      padding: 50px;
       text-align: center;
+      animation: slideIn 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
     }
-    .contact-container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 90%;
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0.05;
+      animation: shimmer 3s ease-in-out infinite;
     }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
     h1 {
-      color: #007bff;
-      font-size: 2.5em;
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3em;
+      font-weight: 700;
       margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
-    p {
+
+    .subtitle {
       font-size: 1.2em;
-      margin-bottom: 30px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
     }
-    .contact-info {
-      font-size: 1.1em;
-      margin-bottom: 30px;
+
+    nav {
+      margin-bottom: 40px;
     }
-    .nav-links {
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
     }
-    .nav-links a {
+
+    nav a {
+      color: var(--text-secondary);
       text-decoration: none;
-      color: #007bff;
-      font-weight: 600;
       padding: 10px 20px;
-      border: 2px solid #007bff;
-      border-radius: 10px;
-      transition: all 0.3s ease;
+      border-radius: 50px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+      font-weight: 600;
     }
-    .nav-links a:hover {
-      background: #007bff;
+
+    nav a:hover {
       color: white;
+      background: var(--accent-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin-bottom: 50px;
+    }
+
+    .contact-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .contact-card:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-card h3 {
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.4em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .contact-card p {
+      margin: 10px 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-light);
+      margin-bottom: 50px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--glass-border);
+      border-radius: 15px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      color: var(--text-primary);
+      font-size: 1em;
+      outline: none;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+      transform: scale(1.02);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 15px 30px;
+      background: var(--accent-gradient);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 25px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .social-link:hover {
+      color: white;
+      background: var(--accent-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .faq-section {
+      text-align: left;
+    }
+
+    .faq-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--shadow-light);
+    }
+
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 200px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+
+      nav a {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+
+      .social-links {
+        gap: 10px;
+      }
+
+      .social-link {
+        padding: 12px 20px;
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .contact-card {
+        padding: 20px;
+      }
+
+      .contact-form {
+        padding: 20px;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-gradient);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
     }
   </style>
 </head>
 <body>
-  <div class="contact-container">
-    <h1>📞 Kontak Kami</h1>
-    <p>Jika Anda memiliki pertanyaan atau saran, jangan ragu untuk menghubungi kami.</p>
-    <div class="contact-info">
-      <p><strong>Nomor Telepon:</strong> 085218061800</p>
+  <!-- Background Music -->
+  <audio id="bg-music" loop autoplay style="display: none;">
+    <source src="Music/DJ MALU MALU BOY.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Background Music Persistence
+    const bgMusic = document.getElementById('bg-music');
+    const currentTime = sessionStorage.getItem('bgMusicTime');
+    const isPlaying = sessionStorage.getItem('bgMusicPlaying') === 'true';
+
+    if (currentTime) {
+      bgMusic.currentTime = parseFloat(currentTime);
+    }
+
+    if (isPlaying) {
+      bgMusic.play().catch(() => {});
+    }
+
+    // Save music state when page unloads
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('bgMusicTime', bgMusic.currentTime);
+      sessionStorage.setItem('bgMusicPlaying', !bgMusic.paused);
+    });
+  </script>
+  <div class="container">
+    <h1>Kontak Kami</h1>
+    <p class="subtitle">Jika Anda memiliki pertanyaan, saran, atau ingin berkolaborasi, jangan ragu untuk menghubungi kami!</p>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Aplikasi Utama</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Telepon</h3>
+        <p><strong>Nomor:</strong> 085218061800</p>
+        <p>Hubungi kami langsung untuk pertanyaan mendesak atau dukungan teknis.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p><strong>Alamat:</strong> contact@projectgabut.com</p>
+        <p>Kirim email untuk pertanyaan bisnis, kolaborasi, atau feedback.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Jam Operasional</h3>
+        <p><strong>Senin - Jumat:</strong> 09:00 - 18:00 WIB</p>
+        <p><strong>Sabtu - Minggu:</strong> 10:00 - 16:00 WIB</p>
+      </div>
     </div>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="about.html">Tentang</a>
+
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label for="name">Nama Lengkap</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subjek</label>
+        <input type="text" id="subject" name="subject" placeholder="Subjek pesan" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Kirim Pesan</button>
+    </form>
+
+    <div class="social-links">
+      <a href="#" class="social-link">Facebook</a>
+      <a href="#" class="social-link">Twitter</a>
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">Discord</a>
+      <a href="#" class="social-link">GitHub</a>
+    </div>
+
+    <div class="faq-section">
+      <h2 style="text-align: center; margin-bottom: 30px; background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Pertanyaan Umum (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Apakah situs ini aman untuk digunakan?</div>
+        <div class="faq-answer">Ya, kami berkomitmen untuk menyediakan konten yang aman. Namun, untuk download game, selalu gunakan VPN dan antivirus terbaru.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Bagaimana cara mendapatkan dukungan teknis?</div>
+        <div class="faq-answer">Anda dapat menghubungi kami melalui telepon, email, atau formulir kontak di atas. Tim dukungan kami siap membantu 24/7.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Apakah ada biaya untuk menggunakan situs ini?</div>
+        <div class="faq-answer">Tidak, semua konten di situs ini gratis. Kami tidak memungut biaya apapun untuk akses atau penggunaan.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Bisakah saya berkontribusi ke proyek ini?</div>
+        <div class="faq-answer">Tentu! Kami terbuka untuk kolaborasi. Hubungi kami melalui email atau sosial media untuk diskusi lebih lanjut.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Apa yang harus saya lakukan jika menemukan bug?</div>
+        <div class="faq-answer">Laporkan bug melalui formulir kontak atau email. Sertakan detail lengkap tentang masalah yang Anda alami.</div>
+      </div>
     </div>
   </div>
+
+  <script>
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData);
+
+      // Simulate form submission (replace with actual submission logic)
+      alert(`Terima kasih ${data.name}! Pesan Anda telah dikirim. Kami akan segera menghubungi Anda.`);
+
+      // Reset form
+      contactForm.reset();
+    });
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Add animation delay to contact cards
+    const contactCards = document.querySelectorAll('.contact-card');
+    contactCards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.2}s`;
+    });
+  </script>
 </body>
 </html>
